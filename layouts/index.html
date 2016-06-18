@@ -2,6 +2,7 @@
 <div class="content container">
   <div class="posts">
     {{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
+    {{ partial "pagination.html" . }}
     {{ range $paginator.Pages }}
     <div class="post">
       <h1 class="post-title">
@@ -23,7 +24,7 @@
       {{ end }}
     </div>
     {{ end }}
-    {{ template "_internal/pagination.html" . }}
+    {{ partial "pagination.html" . }}
   </div>
 </div>
 

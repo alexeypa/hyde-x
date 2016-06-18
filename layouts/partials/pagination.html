@@ -1,0 +1,55 @@
+<ul class="pagination">
+  {{ if eq .Paginator.PageNumber 1 }}
+    <li class="disabled">
+      <span aria-hidden="true">&laquo;&laquo;</span>
+    </li>
+  {{ else }}
+    <li>
+      <a href="{{ .Paginator.First.URL }}" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+    </li>
+  {{ end }}
+  {{ if .Paginator.HasPrev }}
+    <li>
+      <a href="{{ .Paginator.Prev.URL }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+    </li>
+
+    {{ range last 5 (first (sub .Paginator.PageNumber 1) .Paginator.Pagers) }}
+      <li>
+        <a href="{{ .URL }}"><span aria-hidden="true">{{ .PageNumber }}</span></a>
+      </li>
+    {{ end }}
+  {{ else }}
+    <li class="disabled">
+      <span aria-hidden="true">&laquo;</span>
+    </li>
+  {{ end }}
+
+  <li class="active">
+    <span aria-hidden="true">{{ .Paginator.PageNumber }}</span>
+  </li>
+
+  {{ if .Paginator.HasNext }}
+    {{ range first 5 (after .Paginator.PageNumber .Paginator.Pagers) }}
+      <li>
+        <a href="{{ .URL }}"><span aria-hidden="true">{{ .PageNumber }}</span></a>
+      </li>
+    {{ end }}
+
+    <li>
+      <a href="{{ .Paginator.Next.URL }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+    </li>
+  {{ else }}
+    <li class="disabled">
+      <span aria-hidden="true">&raquo;</span>
+    </li>
+  {{ end }}
+  {{ if eq .Paginator.PageNumber .Paginator.TotalPages }}
+    <li class="disabled">
+      <span aria-hidden="true">&raquo;&raquo;</span>
+    </li>
+  {{ else }}
+    <li>
+      <a href="{{ .Paginator.Last.URL }}" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+    </li>
+  {{ end }}
+</ul>
