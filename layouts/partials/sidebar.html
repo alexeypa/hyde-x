@@ -17,6 +17,22 @@
     </ul>
 
     <ul class="sidebar-nav">
+      <script>
+        (function() {
+          var cx = '009966018894572705542:ewu98_itf-q';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+              '//cse.google.com/cse/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);
+        })();
+      </script>
+      <gcse:searchbox-only></gcse:searchbox-only>
+    </ul>
+
+    <ul class="sidebar-nav">
       <li class="sidebar-nav-item">
       {{ with .Site.Params.github }}<a href="{{ . }}"><i class="fa fa-github-square fa-3x"></i></a>{{ end }}
       {{ with .Site.Params.bitbucket }}<a href="{{ . }}"><i class="fa fa-bitbucket-square fa-3x"></i></a>{{ end }}
