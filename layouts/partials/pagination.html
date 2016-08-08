@@ -1,55 +1,21 @@
 <ul class="pagination">
-  {{ if eq .Paginator.PageNumber 1 }}
-    <li class="disabled">
-      <span aria-hidden="true">&laquo;&laquo;</span>
-    </li>
-  {{ else }}
-    <li>
-      <a href="{{ .Paginator.First.URL }}" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
-  {{ end }}
-  {{ if .Paginator.HasPrev }}
-    <li>
-      <a href="{{ .Paginator.Prev.URL }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
-
-    {{ range last 5 (first (sub .Paginator.PageNumber 1) .Paginator.Pagers) }}
-      <li>
-        <a href="{{ .URL }}"><span aria-hidden="true">{{ .PageNumber }}</span></a>
-      </li>
-    {{ end }}
-  {{ else }}
-    <li class="disabled">
-      <span aria-hidden="true">&laquo;</span>
-    </li>
-  {{ end }}
-
-  <li class="active">
-    <span aria-hidden="true">{{ .Paginator.PageNumber }}</span>
+  <li class="{{ if .Paginator.HasPrev }}active{{ else }}disabled{{ end }}">
+    <span class="fa-lg">{{ if .Paginator.HasPrev }}<a href="{{ .Paginator.Prev.URL }}" aria-label="Previous">{{ end }}
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;{{ with .Site.Params.previousPageLabel }}{{ . }}{{ else }}Newer{{ end }}
+      {{ if .Paginator.HasPrev }}</a>{{ end }}</span>
   </li>
 
-  {{ if .Paginator.HasNext }}
-    {{ range first 5 (after .Paginator.PageNumber .Paginator.Pagers) }}
-      <li>
-        <a href="{{ .URL }}"><span aria-hidden="true">{{ .PageNumber }}</span></a>
-      </li>
-    {{ end }}
+  <li class="active">
+    <span class="fa-lg">
+      <a href="/post/">
+        {{ with .Site.Params.archiveLabel }}{{ . }}{{ else }}Archive{{ end }}
+      </a>
+    <span>
+  </li>
 
-    <li>
-      <a href="{{ .Paginator.Next.URL }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
-  {{ else }}
-    <li class="disabled">
-      <span aria-hidden="true">&raquo;</span>
-    </li>
-  {{ end }}
-  {{ if eq .Paginator.PageNumber .Paginator.TotalPages }}
-    <li class="disabled">
-      <span aria-hidden="true">&raquo;&raquo;</span>
-    </li>
-  {{ else }}
-    <li>
-      <a href="{{ .Paginator.Last.URL }}" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
-  {{ end }}
+  <li class="{{ if .Paginator.HasNext }}active{{ else }}disabled{{ end }}">
+    <span class="fa-lg">{{ if .Paginator.HasNext }}<a href="{{ .Paginator.Next.URL }}" aria-label="Next">{{ end }}
+        {{ with .Site.Params.nextPageLabel }}{{ . }}{{ else }}Older{{ end }}&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i>
+      {{ if .Paginator.HasNext }}</a>{{ end }}</span>
+  </li>
 </ul>
