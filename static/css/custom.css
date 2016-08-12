@@ -53,3 +53,8 @@ pre {
 .sidebar-nav .gsc-search-box .gsc-clear-button {
   display: none;
 }
+
+figure {
+  display: block;
+  margin: 0 0 1rem;
+}
