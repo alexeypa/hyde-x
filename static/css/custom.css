@@ -22,10 +22,22 @@ pre {
   padding-top : 0;
 }
 
-.sidebar-nav .gsc-search-box .gsc-input > input {
-  background-color: #fff;
+.sidebar-nav .gsc-search-box .gsc-input-box {
+  border: 0;
+}
+
+.sidebar-nav .gsc-search-box .gsc-input-box td {
+  border: 0;
+  padding: 4px 4px 4px 8px;
+}
+
+.sidebar-nav .gsc-search-box .gsc-input table {
+  border: 0;
+  margin: 0;
+}
+
+.sidebar-nav .gsc-search-box .gsc-input input {
   border-radius: 3px;
-  padding : 0.1rem;
 }
 
 .sidebar-nav .gsc-search-box .gsc-search-button {
